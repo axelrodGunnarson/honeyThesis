@@ -1,0 +1,187 @@
+% per commentare una riga mettere % al suo inizio
+% per s-commentare una riga (ossia attivarla) togliere il % al suo inizio
+\documentclass[pdfa% formato PDF/A, obbligatorio per l'archiviazione delle tesi di Polito
+,cucitura%lascia margine per la rilegatura
+%,twoside% per stampa fronte-retro (fortemente consigliato per tesi voluminose, opzionale per le altre)
+%,12pt% font più grande (12pt) rispetto a quello normalmente usato (11pt)
+]{toptesi}
+%
+% Commentare le righe seguenti se NON si è specificata l'opzione "pdfa"
+\hypersetup{%
+    pdfpagemode={UseOutlines},
+    bookmarksopen,
+    pdfstartview={FitH},
+    colorlinks,
+    linkcolor={blue},
+    citecolor={red},
+    urlcolor={blue}
+  }
+% \documentclass[11pt,twoside,oldstyle,autoretitolo,classica,greek]{toptesi}
+% \usepackage[or]{teubner}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Esempio di composizione di tesi di laurea.
+%
+% Questo esempio e' stato preparato inizialmente 13-marzo-1989
+% e poi e' stato modificato via via che TOPtesi andava
+% arricchendosi di altre possibilita'.
+%
+% Nel seguito laurea "quinquennale" sta anche per "specialistica" o "magistrale"
+
+% Cambiare encoding a piacere; oppure non caricare nessun encoding se si usano
+% solo caratteri a 7 bit (ASCII) nei file d'entrata.
+%
+\usepackage[latin1]{inputenc}% IMPORTANTE! usare codifica ISO-8859-1 per le lettere accentate
+
+\ateneo{Politecnico di Torino}
+
+%%% scegliere la propria facoltà (solo PRIMA dell'AA 2012-2013)
+%
+%\facolta[III]{Ingegneria dell'Informazione}
+%\facolta[IV]{Organizzazione d'Impresa\\e Ingegneria Gestionale}
+%\Materia{Remote sensing}% uso sconsigliato
+
+%\monografia{Gestione informatizzata di un magazzino ricambi}% per la laurea triennale
+\titolo{Web Honeypot 2.0\\Deployment of a Fully Functional Honeypot Network\\and
+an Analysis of Attackers Behaviors\\ on the Web}% per la laurea quinquennale e il dottorato
+%\sottotitolo{Metodo dei satelliti medicei}% NON obbligatorio, per la laurea quinquennale e il dottorato
+
+%%% scegliere il proprio corso
+%
+%\corsodilaurea{Ingegneria dell'Organizzazione d'Impresa}% per la laurea di primo e secondo livello
+%\corsodilaurea{Ingegneria Logistica e della Produzione}% per la laurea di primo e secondo livello
+%\corsodilaurea{Ingegneria Gestionale}% per la laurea di primo e secondo livello
+\corsodilaurea{Ingegneria Informatica}% per la laurea di primo e secondo livello
+%\corsodidottorato{Meccanica}% per il dottorato
+
+\candidato{Maurizio \textsc{Abba'}}% per tutti i percorsi
+%\secondocandidato{Evangelista \textsc{Torricelli}}% per la laurea magistrale solamente
+%\direttore{prof. Albert Einstein}% per il dottorato
+%\coordinatore{prof. Albert Einstein}% per il dottorato
+\relatore{prof.\ Antonio Lioy}% per la laurea e il dottorato
+\secondorelatore{prof.\ Davide Balzarotti}% per la laurea magistrale
+%\terzorelatore{{\tabular{@{}l}dott.\ Neil Armstrong\\prof. Maria Rossi\endtabular}}% per la laurea magistrale
+%\tutore{ing.~Karl Von Braun}% per il dottorato
+%\tutoreaziendale{dott.\ ing.\ Giovanni Giacosa} % solo per la laurea di secondo livello con tesi svolta in azienda
+%\NomeTutoreAziendale{Supervisore aziendale\\Centro Ricerche FIAT}
+%\sedutadilaurea{Gennaio 2014}% per la laurea quinquennale
+%\esamedidottorato{Novembre 1610}% per il dottorato
+%\sedutadilaurea{\textsc{Marzo} 2013}% per la laurea triennale
+\sedutadilaurea{\textsc{Anno~accademico} 2013-2014}% per la laurea magistrale
+%\annoaccademico{1615-1616}% solo con l'opzione classica
+%\annoaccademico{2006-2007}% idem
+%\ciclodidottorato{XV}% per il dottorato
+\logosede{logopolito}
+%
+%\chapterbib %solo per vedere che cosa succede; e' preferibile comporre una sola bibliografia
+%\AdvisorName{Supervisors}
+%\newtheorem{osservazione}{Osservazione}% Standard LaTeX
+
+%\usepackage[a-1b]{pdfx}
+%\hypersetup{%
+%    pdfpagemode={UseOutlines},
+%    bookmarksopen,
+%    pdfstartview={FitH},
+%    colorlinks,
+%    linkcolor={blue},
+%    citecolor={green},
+%    urlcolor={blue}
+%  }
+
+%
+% per numerare e far comparire nell'indice anche le sezioni di quarto livello
+% SCONSIGLIATO! da usarsi solo in caso di estrema necessità
+%\setcounter{secnumdepth}{4}% section-numbering-depth
+%\setcounter{tocdepth}{4}% TOC-numbering-depth (TOC=Table-Of-Content)
+%\setbindingcorrection{3mm}
+
+\input{commands.tex}
+
+%my modifications
+%\usepackage[pdftex]{graphicx}
+%\DeclareGraphicsExtensions{.pdf,.png,.jpg,.gif}
+
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{tabularx}
+\selectlanguage{english}
+
+%end my modifications
+
+\begin{document}
+
+\errorcontextlines=9
+
+\expandafter\ifx\csname StileTrieste\endcsname\relax
+    \frontespizio
+\else
+    \paginavuota
+    \begin{dedica}
+        Ai miei genitori.
+    \end{dedica}
+    \tomo
+\fi
+
+
+\sommario
+
+\textcolor{red}{1-Come faccio a cambiare lingua!? ho inserito il select language appena prima di begin document ma non cambia nulla..\\}
+
+The first section of this thesis presents the design, implementation, and deployment of a network of 500 fully functional honeypot web-sites, hosting a range of different services, whose aim is to attract attackers and collect information on what they do during and after their attacks.
+
+In the second chapter, we present a platform for the automatic collection, normalization and clustering of files attackers uploaded or modified on the honey-pot network. We also implemented a web interface for monitoring the honeypot network and for a visual representation of clusters, whose design will also be discussed in this chapter.
+
+In the last part of this work we show the results obtained by collecting, normalizing and clustering uploaded files, showing the most common behaviors of web attacks in the real world. We also present some examples of files we collected during our experiments.
+
+Finally, we try to analyze the reasons and goals of such attacks.
+
+All experiments have been realized in Eurecom Institute (Sophia Antipolis, France), with the support of Trend MicroSystem for the websites hosting service.
+
+\textcolor{blue}{NOTE: Maybe insert some results, like total number of files uploaded or a brief introduction to common trends (maybe just numbers) to do at the end}
+
+
+%% inserire sempre nella tesi per la laurea di I livello, perché il nome dei tutori non è indicato sul frontespizio.
+%Il lavoro descritto in questa monografia è stato svolto sotto la supervisione
+%del Prof. Antonio Lioy (tutore accademico)% inserire sempre il nome del tutore accademico
+% e dell'Ing. Mario Rossi (tutore aziendale)% inserire solo se la monografia è relativa ad un tirocinio.
+%.
+
+%\tablespagetrue % normalmente questa riga non serve ed e' commentata
+%\figurespagetrue % normalmente questa riga non serve ed e' commentata
+
+\indici
+
+\mainmatter
+
+\chapter{Introduction}
+
+\input{introduction.tex}
+
+\chapter{HoneyProxy: The Honeypot Platform}
+
+\input{chapter1.tex}
+
+\chapter{Data collection, analysis and visualization}
+
+\input{chapter2.tex}
+
+\chapter{Results}
+
+\input{chapter3.tex}
+
+\chapter{Risultati}
+
+Inserire in questo capitolo i risultati conseguiti, cercando di analizzarli -- se possibile -- in modo quantitativo.
+
+
+\chapter{Conclusioni}
+
+Qui si inseriscono brevi conclusioni sul lavoro svolto, senza ripetere inutilmente il sommario.
+
+Si possono evidenziare i punti di forza e quelli di debolezza, nonché i possibili sviluppi futuri o attività da svolgere per migliorare i risultati.
+
+
+\input{biblio.tex}
+
+
+\end{document}
