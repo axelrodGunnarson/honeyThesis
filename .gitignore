@@ -6,3 +6,5 @@
 *.out
 *.gz
 *.toc
+.DS_Store
+*.fls
