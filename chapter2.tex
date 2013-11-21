@@ -142,19 +142,19 @@ Graphs displaying is performed by using D3 library \cite{d3_home}, acronym for D
 
 Our dashboard should be able to give the following informations to the administrator: an overview over the current situation inside the system (files received, requests etc), an interactive graph showing in a clear way the various clusters, files the system failed to clusterize, stats about the system (requests, common referers, attackers provenance..). In the following I will give three examples of the functionalities of the interface.
 
-The homepage(ref~\ref{fig:web_home}) of the web interface displays several pie charts, the most important being the number of file received during the day, divided among three categories, oldFiles (files that were already present in our databases), newFiles (new files received for which our clusterization system already categorized) and newUnknownFiles (new files that our system was unable to clusterize), and the result of our categorization for the files received during the day. Clicking on a slice of a pie displays a list of files belonging to that tranche, with the possibility to display details for each file.
-
 \begin{figure}[tbh]
 \centerline{\includegraphics[scale=0.2]{Images/honeyFace_home.jpg}}
 \caption{Screenshot of the web interface home page\label{fig:web_home}}
 \end{figure}
 
-The Graph page (ref~\ref{fig:web_home}) displays a force-directed graph showing the different clusters. It is possible to choose several parameters for the display, like the categories to be displayed and the file types. We chose to display files received only in the last 15 days with respect to the date chosen, in order not to overload the browser (the map is interactive and it's built client-side).
+The homepage(ref~\ref{fig:web_home}) of the web interface displays several pie charts, the most important being the number of file received during the day, divided among three categories, oldFiles (files that were already present in our databases), newFiles (new files received for which our clusterization system already categorized) and newUnknownFiles (new files that our system was unable to clusterize), and the result of our categorization for the files received during the day. Clicking on a slice of a pie displays a list of files belonging to that tranche, with the possibility to display details for each file.
 
 \begin{figure}[tbh]
 \centerline{\includegraphics[scale=0.2]{Images/honeyFace_home.jpg}}
 \caption{Screenshot of the web interface home page\label{fig:web_home2}}
 \end{figure}
+
+The Graph page (ref~\ref{fig:web_home}) displays a force-directed graph showing the different clusters. It is possible to choose several parameters for the display, like the categories to be displayed and the file types. We chose to display files received only in the last 15 days with respect to the date chosen, in order not to overload the browser (the map is interactive and it's built client-side).
 
 We can display details about a single file through the single file web page. We can see several details about the file, type, clusters, date received etc. We also have the possibility to write a comment about the file.
 The most interesting feature we provided on this page is the possibility to use ``Transformer'' over the single file, obtaining a rapid feedback over how our system managed the single file and in order to get a better understanding over the code.
@@ -176,5 +176,3 @@ The most interesting feature we provided on this page is the possibility to use 
 \caption{Example of the Single File web page}
 \label{fig:test}
 \end{figure}
-
-\textcolor{blue}{NOTE: images will be displayed in a single page because there are too many, maybe remove one of them}
