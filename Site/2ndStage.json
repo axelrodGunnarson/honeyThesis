@@ -1,0 +1,27 @@
+{
+"elements":[
+    {"value": 26.32,
+    "label":"Defacement"
+    },
+    {"value": 25.85,
+    "label":"Mailer"
+    },
+    {"value": 12.06,
+    "label":"Botnet"
+    },  
+    {"value": 11.52,
+    "label":"Phishing Kit"
+    },
+    {"value": 9.18,
+    "label":"Attack Script"
+    },
+    {"value": 2.88,
+    "label":"Local Exploit"
+    },    
+    {"value": 12.19,
+    "label":"Others"
+    }
+
+    ]
+}
+

@@ -1,0 +1,13 @@
+{
+"elements":[
+    {"value": 62.3,
+    "label":"USA"
+    },
+    {"value": 21.2,
+    "label":"EastEU"
+    },
+    {"value": 16.5,
+    "label":"Others"
+    }  
+    ]
+}

@@ -1,0 +1,22 @@
+{
+"elements":[
+    {"value": 45.2,
+    "label":"Drugs"
+    },
+    {"value": 17.4,
+    "label":"SEO"
+    },
+    {"value": 13.5,
+    "label":"Electronics"
+    },  
+    {"value": 7.9,
+    "label":"Adults"
+    },
+    {"value": 5.2,
+    "label":"Health Care"
+    },
+    {"value": 10.8,
+    "label":"Others"
+    }  
+    ]
+}

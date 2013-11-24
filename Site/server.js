@@ -29,21 +29,7 @@ app.get("/createGraph.js", function (request, response) {
 });
 
 app.get("/getData", function (request, response) {
-    var s={};
-    s.elements=[
-    {"value": 100,
-    "label":"targa"
-    },
-    {"value": 200,
-            "label":"targB"
-    },
-    {"value": 300,
-            "label":"targC"
-    },
-    
-    
-    ];
-    response.send(s);
+    fs.readFile("2ndStage.json", function(err,data){data=JSON.parse(data);response.send(data)});
 });
 
 console.log("created");

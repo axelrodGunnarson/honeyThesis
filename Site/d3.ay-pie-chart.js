@@ -154,13 +154,14 @@ ay.pie_chart    = function (name, data, options) {
                 label = [];
             if (e.data.name !== undefined) {
                 label.push(e.data.name);
-            }
+            } /*
             if (settings.value) {
                 label.push(' - ' + e.data.value);
             }
             if (settings.percentage) {
                 label.push(' (' +percentage + '%)');
-            }
+            } */
+            label.push(' - '+percentage+'%');
 
             return label.join(' ');
         })

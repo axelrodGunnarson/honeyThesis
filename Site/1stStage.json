@@ -1,0 +1,20 @@
+{
+"elements":[
+    {"value": 65.75,
+    "label":"Web Shells"
+    },
+    {"value": 17.25,
+    "label":"Phishing Kits"
+    },
+    {"value": 1.75,
+    "label":"Downloader"
+    },  
+    {"value": 1.5,
+    "label":"Information Leakers"
+    },
+    {"value": 13.75,
+    "label":"Others"
+    }
+    ]
+}
+

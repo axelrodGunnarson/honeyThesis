@@ -1,0 +1,25 @@
+{
+"elements":[
+    {"value": 36.8,
+    "label":"USA"
+    },
+    {"value": 14.2,
+    "label":"RUS"
+    },
+    {"value": 11.7,
+    "label":"UKR"
+    },  
+    {"value": 10.4,
+    "label":"CHN"
+    },
+    {"value": 9.2,
+    "label":"POL"
+    },
+    {"value": 6.1,
+    "label":"LAT"
+    },
+    {"value": 11.6,
+    "label":"Others"
+    }  
+    ]
+}

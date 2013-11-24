@@ -43,7 +43,7 @@ During the first few days, most of the traffic was caused by benign web crawlers
 Some statistics about the origin of the requests is shown in Figure ~\ref{fig:requestsCrawlers}. The amount of legitimate crawler requests is more or less stable in time, while, as time goes by and the honeypot websites get indexed by search engines and linked on hacking forums or on link farming networks, the number of requests by malicious bots or non-crawlers has an almost linear increase.
 While looking at these statistics we also noticed a number of suspicious spikes in the number of accesses. In several cases, one of our web applications was visited, in few hours, by several thousands of unique IP addresses (compared with an average of 192 per day), a clear indication that a botnet was used to scan our sites.
 
-Interestingly, we observed the first suspicious activity only 2 hours and 10 minutes after the deployment of our system, when our forum web application started receiving few automated registrations. However, the first posts on the forum appeared only four days later, on December 27th. Even more surprising was the fact that the first visit from a non-crawler coincided with the first attack: 4 hours 30 minutes after the deployment of the honeypots, a browser with Polish locale visited our osCommerce web application and exploited a file upload vulnerability to upload a malicious PHP script to the honeypot. We also examined the IP source address in order to understand the more active countries, as we can see from ~\ref{fig:requests_countries} Russia, Ukraine and USA are in order the top three countries for number of requests. \textcolor{blue}{HEATMAP OR PIE CHART?}.
+Interestingly, we observed the first suspicious activity only 2 hours and 10 minutes after the deployment of our system, when our forum web application started receiving few automated registrations. However, the first posts on the forum appeared only four days later, on December 27th. Even more surprising was the fact that the first visit from a non-crawler coincided with the first attack: 4 hours 30 minutes after the deployment of the honeypots, a browser with Polish locale visited our osCommerce web application and exploited a file upload vulnerability to upload a malicious PHP script to the honeypot. We also examined the IP source address in order to understand the more active countries, as we can see from ~\ref{fig:requests_countries} China, Russia, and USA are in order the top three countries for number of requests. \textcolor{blue}{HEATMAP OR PIE CHART?}.
 
 \begin{figure}[tbh]
 \centerline{\includegraphics[scale=0.5]{Images/requests_countries.jpg}}
@@ -79,7 +79,7 @@ Overall, we logged 444 distinct exploitation sessions. An interesting finding is
 In some of these exploitation sessions, the attacker tried to disguise her tools and browser as known benign bots. Some crawler User-Agent strings that were often used during exploitation sessions were: FreeWebMonitoring, Gigabot/3.0, gsa-crawler, IlTrovatore-Setaccio/1.2, bing- bot/2.0;, and Googlebot/2.1.
 
 \begin{figure}[tbh]
-\centerline{\includegraphics[width=0.7\textwidth]{Images/1stStageAttack.png}}
+\centerline{\includegraphics[width=0.7\textwidth]{Images/1stStageAttack.jpg}}
 \caption{1st Stage attack file categorization.\label{fig:1stStageAttack}}
 \end{figure}
 
@@ -100,14 +100,14 @@ A total of 68,201 unique messages were posted on the forum during our study, by 
 Even more surprising than the number of posts is the number of new users registered to the forum: 1907 per day in average, and reaching a peak of 14,400 on October 23, 2013. We measured that 33.8\% of the IP addresses that performed actions on our forum were responsible of creating at least one fake account, but never posted any message. This finding suggests there are some incentives for criminals to perform automatic user registrations, and perhaps selling user accounts is even more profitable than the spamming activity itself. Our hypothesis is that, in some cases, forum accounts can be sold in bulk to other actors in the black market. We indeed found 1,260 fake accounts that were created from an IP address and then used few days later by other, different IPs, to post messages. This does not necessarily validate our hypothesis, but shows at least that forum spamming has become a complex ecosystem and it is difficult, nowadays, to find only a single actor behind a spam or link farming campaign.
 
 \begin{figure}[tbh]
-\centerline{\includegraphics[width=0.7\textwidth]{Images/spamCountriesIP.png}}
+\centerline{\includegraphics[width=0.7\textwidth]{Images/spamCountriesIP.jpg}}
 \caption{Country provenance of IPs active on forum (message posting or registration).\label{fig:spamCountriesIP}}
 \end{figure}
 
 We tracked the geolocation of IP addresses responsible for registering users and posting to the forum. We identified the countries which are the most active on this category of rouge activity as the United States and Eastern Europe countries (mostly Russia, Ukraine, Poland, Latvia, Romania), as shown in Figure~\ref{fig:spamCountriesIP}. A total of 6687 distinct IP addresses were active on our forum (that is, posted at least one message or registered one or more accounts). Among these, 36.8\% were associated to locations in the US, while 51.6\% came from one of the cited Eastern European countries. The country coverage drastically changes if we consider only IP addresses that posted at least one message to the forum (ref Figure~\ref{fig:spamCountriesMessage}). In this case, IPs from the United States represent, alone, 62.3\% of all the IP addresses responsible for posting messages (Eastern Europe IPs in this case represent 21.2\% of the total), while we have much more variety in the number of different countries involved in the activity. This behavior strongly suggests a country-related specialization in malicious activities, where a small number of attackers in few areas sell on the black market the results of their activities to foreign agents, who perform different activities.
 
 \begin{figure}[tbh]
-\centerline{\includegraphics[width=0.7\textwidth]{Images/spamCountriesMessage.png}}
+\centerline{\includegraphics[width=0.7\textwidth]{Images/spamCountriesMessage.jpg}}
 \caption{Country provenance of IPs posting at least one message.\label{fig:spamCountriesMessage}}
 \end{figure}
 
@@ -116,8 +116,8 @@ As shown in Figure~\ref{fig:SpamCategory}, the trends we extracted from message 
 All the links inserted in the forum posts underwent an in-depth analysis using two automated, state-of-the-art tools for the detection of malicious web pages, namely Google Safe Browsing \cite{googleSafeBrowsing} and Wepawet \cite{wepaWet}. The detection results of these two tools show that, on the 221,423 URLs we extracted from the forum posts, a small but not insignificant fraction (2248, roughly 1 out of 100) consisted in malicious or possibly harmful links.
 
 \begin{figure}[tbh]
-\centerline{\includegraphics[width=0.7\textwidth]{Images/SpamCategory.png}}
-\caption{Country provenance of IPs posting at least one message.\label{fig:SpamCategory}}
+\centerline{\includegraphics[width=0.7\textwidth]{Images/SpamCategory.jpg}}
+\caption{Categories of spam messages.\label{fig:SpamCategory}}
 \end{figure}
 
 \subsection{Post-Exploitation}
@@ -134,7 +134,7 @@ Finally, in 61\% of the sessions the attackers uploaded a new file, and in 50\% 
 During this phase most of the attackers created or uploaded a new file: as can be seen in Figure~\ref{fig:2ndStageAttack}, there is much more variety in the category of files uploaded, as during this stage the attackers is trying to accomplish a certain goal rather than just obtain an access to the machine. The results do not consider attacks where a webshell is uploaded, as we still consider this action to be a 1st stage attack.
 
 \begin{figure}[tbh]
-\centerline{\includegraphics[width=0.7\textwidth]{Images/2ndStageAttack.png}}
+\centerline{\includegraphics[width=0.7\textwidth]{Images/2ndStageAttack.jpg}}
 \caption{2nd Stage Attack File Categorization\label{fig:2ndStageAttack}}
 \end{figure}
 
@@ -194,5 +194,24 @@ Total & 85163 & 111399 \\
 \end{center}
 \end{table}
 
-We analyzed the files uploaded during the exploitation phase, and the ones created or modified during the post-exploitation phase. We normalized each file content, and we clustered them together according to their similarity, obtaining several clusters according to their ``purpose''. We identified a total of 33 categories, and the results are displayed in table~\ref{tab:webapps}
-%The results of the clustering are summarized in table 2 and cover, in total, 86.4% of the unique files col- lected by our honeypots. For them, Figure 6 shows the dis- tribution of the file categories6. For example, 1.7% of the unique files we observed in our experiments were used to try to escalate the privileges on the compromised machine. This is different from saying that 1.7% of the attackers tried to escalate the privileges of the machine. Unfortunately, linking the files to the attacks in which they were used is not always possible. Therefore, we computed an estimation of the attackers that performed a certain action by identi- fying each unique IP that uploaded a certain file during an
+We analyzed the files uploaded during the exploitation phase, and the ones created or modified during the post-exploitation phase. We normalized each file content, and we clustered them together according to their similarity, obtaining several clusters according to their ``purpose''. We identified a total of 25 categories, and the results are displayed in table~\ref{tab:webapps}. From the table we removed all broken files. The corresponding graphs shows the distribution of files according to their percentage.
+
+\begin{figure}
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=1.0\linewidth]{Images/obf_file.jpg}
+  \caption{Unique Files Distribution}
+  \label{fig:sub1}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=1.0\linewidth]{Images/deobf_file.jpg}
+  \caption{Total Files Distribution}
+  \label{fig:sub2}
+\end{subfigure}
+\caption{Categorization of files received}
+\label{fig:test}
+\end{figure}
+
+For example, 1.7\% of the unique files we observed in our experiments were used to try to escalate the privileges on the compromised machine. This is different from saying that 1.7\% of the attackers tried to escalate the privileges of the machine. Unfortunately, linking the files to the attacks in which they were used is not always possible. Therefore, we computed an estimation of the attackers that performed a certain action by identifying each unique IP that uploaded a certain file during an

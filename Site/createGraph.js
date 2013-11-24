@@ -3,8 +3,10 @@ var arrOfFiles = [];
 
 $(document).ready(function (e) {
     var req="/getData";
+    console.log("asked data");
     $.getJSON(req,
         function (data) {
+            console.log("received");
             console.log(data);
             arrGraph=[];
             index=1;
