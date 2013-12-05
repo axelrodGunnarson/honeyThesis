@@ -1,0 +1,16 @@
+{
+"elements":[
+    {"value": 52.1,
+    "label":"Banks and Money-Transfer"
+    },
+    {"value": 21.6,
+    "label":"Webmail"
+    },
+    {"value": 17.8,
+    "label":"E-Commerce"
+    },  
+    {"value": 9.5,
+    "label":"Others"
+    }  
+    ]
+}

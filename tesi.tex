@@ -5,6 +5,7 @@
 %,twoside% per stampa fronte-retro (fortemente consigliato per tesi voluminose, opzionale per le altre)
 %,12pt% font più grande (12pt) rispetto a quello normalmente usato (11pt)
 ]{toptesi}
+
 %
 % Commentare le righe seguenti se NON si è specificata l'opzione "pdfa"
 \hypersetup{%
@@ -104,12 +105,13 @@ an Analysis of Attackers Behaviors\\ on the Web}% per la laurea quinquennale e i
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{tabularx}
-\selectlanguage{english}
+\usepackage{float}
+
 
 %end my modifications
 
 \begin{document}
-
+\selectlanguage{english}
 \errorcontextlines=9
 
 \expandafter\ifx\csname StileTrieste\endcsname\relax
@@ -125,8 +127,6 @@ an Analysis of Attackers Behaviors\\ on the Web}% per la laurea quinquennale e i
 
 \sommario
 
-\textcolor{red}{1-Come faccio a cambiare lingua!? ho inserito il select language appena prima di begin document ma non cambia nulla..\\}
-
 The first section of this thesis presents the design, implementation, and deployment of a network of 500 fully functional honeypot web-sites, hosting a range of different services, whose aim is to attract attackers and collect information on what they do during and after their attacks.
 
 In the second chapter, we present a platform for the automatic collection, normalization and clustering of files attackers uploaded or modified on the honey-pot network. We also implemented a web interface for monitoring the honeypot network and for a visual representation of clusters, whose design will also be discussed in this chapter.
@@ -137,8 +137,7 @@ Finally, we try to analyze the reasons and goals of such attacks.
 
 All experiments have been realized in Eurecom Institute (Sophia Antipolis, France), with the support of Trend MicroSystem for the websites hosting service.
 
-\textcolor{blue}{NOTE: Maybe insert some results, like total number of files uploaded or a brief introduction to common trends (maybe just numbers) to do at the end}
-
+During these experiments we collected 9.5 GB of raw HTTP Requests, consisting in approximately 11.0M GET and 1.9M POST. We extracted more than 110,000 files, 85,000 of them unique. Furthermore, we divided these files in 25 categories and we analyzed each of them in order to analyze their purpose and detect the most common trends used by attackers in the wild.
 
 %% inserire sempre nella tesi per la laurea di I livello, perché il nome dei tutori non è indicato sul frontespizio.
 %Il lavoro descritto in questa monografia è stato svolto sotto la supervisione
@@ -169,12 +168,9 @@ All experiments have been realized in Eurecom Institute (Sophia Antipolis, Franc
 
 \input{chapter3.tex}
 
-\chapter{Conclusioni}
+\chapter{Conclusions and Future Works}
 
-Qui si inseriscono brevi conclusioni sul lavoro svolto, senza ripetere inutilmente il sommario.
-
-Si possono evidenziare i punti di forza e quelli di debolezza, nonché i possibili sviluppi futuri o attività da svolgere per migliorare i risultati.
-
+\input{chapter4.tex}
 
 \input{biblio.tex}
 

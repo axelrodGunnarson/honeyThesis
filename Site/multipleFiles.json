@@ -1,0 +1,35 @@
+{
+"elements":[
+    {"value": 6355,
+    "label":"Others"
+    },
+    {"value": 1959,
+    "label":"BruteForcer Script"
+    },
+    {"value": 2322,
+    "label":"Local Exploit"
+    },
+    {"value": 2952,
+    "label":"Flooder Script"
+    },
+    {"value": 5064,
+    "label":"Attack Script"
+    },
+    {"value": 7912,
+    "label":"BotNet"
+    },
+    {"value": 16608,
+    "label":"Phishing Pack"
+    },
+    {"value": 16324,
+    "label":"Mailer"
+    },
+    {"value": 13023,
+    "label":"Defacement"
+    },
+    {"value": 38571,
+    "label":"Web Shell"
+    }
+    ]
+}
+

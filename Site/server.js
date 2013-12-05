@@ -29,7 +29,7 @@ app.get("/createGraph.js", function (request, response) {
 });
 
 app.get("/getData", function (request, response) {
-    fs.readFile("2ndStage.json", function(err,data){data=JSON.parse(data);response.send(data)});
+    fs.readFile("phishing.json", function(err,data){data=JSON.parse(data);response.send(data)});
 });
 
 console.log("created");

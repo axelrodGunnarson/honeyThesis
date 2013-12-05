@@ -1,0 +1,44 @@
+{
+"elements":[
+    {"value": 4065,
+    "label":"Others"
+    },
+    {"value": 597,
+    "label":"Uploader"
+    },
+    {"value": 656,
+    "label":"Configuration Overloader"
+    },
+    {"value": 703,
+    "label":"BackDoor"
+    },
+    {"value": 2457,
+    "label":"BruteForcer Script"
+    },
+    {"value": 3033,
+    "label":"Local Exploit"
+    },
+    {"value": 3341,
+    "label":"Flooder Script"
+    },
+    {"value": 4956,
+    "label":"Attack Script"
+    },
+    {"value": 7878,
+    "label":"BotNet"
+    },
+    {"value": 9445,
+    "label":"Phishing Pack"
+    },
+    {"value": 13012,
+    "label":"Mailer"
+    },
+    {"value": 14698,
+    "label":"Defacement"
+    },
+    {"value": 20322,
+    "label":"Web Shell"
+    }
+    ]
+}
+
