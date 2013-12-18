@@ -29,7 +29,7 @@ We perform different analysis both over the uploaded files and the requests, lik
 \subsection{Analysis of Requests}
 
 Even if we collect and store in a database all kinds of requests we receive, we decided to analyze in more details only HTTP/HTTPS requests for the moment, further analysis will may be performed in the future.
-First of all, we collect the complete URLs from the HTTP/HTTPS requests, and we integrate these data with a list of URLs we extract directly from the uploaded files. We filter this list from a range of blacklisted domains, like youtube, facebook and image hosting websites. We send this list of URLs to another machine, which will perform a GET request for all these URLs by using a DSL connection. In this way, even if the webserver we are connecting to is owned by an attacker who is checking his logs, there is no possibility for him to discover our presence. All files collected in this way are added to the group of files collected during the day, ready for being analyzed.
+First of all, we collect the complete URLs from the HTTP/HTTPS requests, and we integrate these data with a list of URLs we extract directly from the uploaded files. We filter this list from a range of blacklisted domains, like youtube, facebook and image hosting websites. We send this list of URLs to another machine, which will perform a GET request for all these URLs by using a DSL connection. In this way, even if the web server we are connecting to is owned by an attacker who is checking his logs, there is no possibility for him to discover our presence. All files collected in this way are added to the group of files collected during the day, ready for being analyzed.
 
 \subsection{Analysis of Files}
 
@@ -119,16 +119,16 @@ Our aim is to create a honeypot platform which can be easily deployed, updated a
 
 \subsection{Back-End Architecture}
 
-We chose to use \emph{Node.Js} as platform for developing the webserver. \emph{Node.Js} is advertised on its website \cite{node_home} as
+We chose to use \emph{Node.Js} as platform for developing the web server. \emph{Node.Js} is advertised on its website \cite{node_home} as
 \begin{quotation}
 Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.
 \end{quotation}
 
 Its particular event-driven, non-blocking model, in fact, allows us to perform database queries and file analysis operations without involving waiting time from the end-user point of view. Furthermore, its modular nature and easiness of deployment makes the replication process fast and reliable.
 
-We wanted to create a platform which does rely on a minimum number of external addition (other to the webserver) and which can perform several parallel queries to different databases for computing rankings and other operations. The system relies on \emph{Express} \cite{express_node} Framework, which is specifically aimed for minimality and flexibility, and uses only a few other modules, in the specific \emph{mysql} driver for Database communications and \emph{sanitizer}, a sanitizer library for strings.
+We wanted to create a platform which does rely on a minimum number of external addition (other to the web server) and which can perform several parallel queries to different databases for computing rankings and other operations. The system relies on \emph{Express} \cite{express_node} Framework, which is specifically aimed for minimality and flexibility, and uses only a few other modules, in the specific \emph{mysql} driver for Database communications and \emph{sanitizer}, a sanitizer library for strings.
 
-Another requirement we imposed to our software is the possibility for it to work in a private network, disconnected from the Internet. For this reason, every library is provided directly by the webserver and there is no need to rely to any external server for the web interface to work.
+Another requirement we imposed to our software is the possibility for it to work in a private network, disconnected from the Internet. For this reason, every library is provided directly by the web server and there is no need to rely to any external server for the web interface to work.
 
 \subsection{Front-End Architecture}
 

@@ -1,6 +1,6 @@
 \section{General Structure}
 
-Our honeypot system is composed of a number of websites (500 in our experiments), each containing the installation of seven among the most common - and notoriously vulnerable - content management systems, and a static web site linked to 17 pre-installed web shells among the most common ones that can be found on the Internet, like c99 and priv57r.
+Our honeypot system is composed of a number of websites (500 in our experiments), each containing the installation of seven among the most common - and notoriously vulnerable - content management systems, and a static website linked to 17 pre-installed web shells among the most common ones that can be found on the Internet, like c99 and priv57r.
 
 A Generic overview of a website can be seen in Figure~\ref{fig:websiteView}
 
@@ -26,7 +26,7 @@ In order to manage such a high-number of different machines in a comfortable way
 Looking more closer to figure~\ref{fig:genSchema}, It can be noticed as the linking structure is not the same for every subdomain. Indeed, each subdomain links to at most 2 different subdomains under its same domain. The aim of this particular structure of the linking graph is to detect possible malicious traffic from systems that automatically follow links and perform automated attacks or scans.
 
 \section{The Web Applications}
-We deployed a total of eight web servers, using seven web applications and one static web site linked to 17 pre-installed webshells. Every web application is based on an open source Content Management System among the most used across the Internet, each one based on php version 5 and using (if needed) MySQL version 5 as RDBMS. For each CMS, we chose a version with a high number of reported vulnerabilities, or at least with a critical one that would allow the attacker to take full control of the application. We also limited our choice to versions no more than 5 years old in order to ensure our websites are still of interest to attackers.
+We deployed a total of eight web servers, using seven web applications and one static website linked to 17 pre-installed web shells. Every web application is based on an open source Content Management System among the most used across the Internet, each one based on php version 5 and using (if needed) MySQL version 5 as RDBMS. For each CMS, we chose a version with a high number of reported vulnerabilities, or at least with a critical one that would allow the attacker to take full control of the application. We also limited our choice to versions no more than 5 years old in order to ensure our websites are still of interest to attackers.
 Our choice was guided by the belief that attackers are always looking for low-hanging fruits. On the other hand, our honeypots will probably miss sophisticated and unconventional attacks, mostly targeted to high profile organizations or well known websites. However, these attacks are not easy to study with simple honeypot infrastructures and are therefore outside the scope of our study.
 
 \begin{description}
@@ -78,7 +78,7 @@ Reference:
 \url{http://www.exploit-db.com/exploits/10274/}
 \end{itemize}
 
-\item[Static website: ] We also created a static website composed only by HTML pages with a hidden directory containing 17 different web-shells. These web-shells have been taken from underground forums and past experiments, and are fully equipped in order to perform any operation an attacker would like to perform, from shell commands execution to full database dump. They are indexable by search engines and can therefore easily be found by an appropriate dork.
+\item[Static website: ] We also created a static website composed only by HTML pages with a hidden directory containing 17 different web shells. These web shells have been taken from underground forums and past experiments, and are fully equipped in order to perform any operation an attacker would like to perform, from shell commands execution to full database dump. They are indexable by search engines and can therefore easily be found by an appropriate dork.
 
 \item[Wordpress: ] Because of the dominant position of Wordpress on the market, we deployed another web application based on this CMS. This specific machine run an updated version of Wordpress (3.4) with two plugins, wpstorecart and nextgengallery. Both these plugins suffer from Arbitrary File Upload vulnerability.
 
@@ -116,10 +116,10 @@ Table~\ref{tab:webapps} shows a summary of the web applications used and its vul
 
 \section{The Web Proxy}
 
-The Web Proxy is in charge of receiving requests from the Internet, creating a unique channel for the communication between the user and the vulnerable webserver and propagating them to the gateway.
+The Web Proxy is in charge of receiving requests from the Internet, creating a unique channel for the communication between the user and the vulnerable web server and propagating them to the gateway.
 All web applications are hosted in our facilities, in eight isolated virtual machines running on a VMWare server. On the proxy hosting side we installed only an ad-hoc proxy tool (HoneyProxy) in charge of forwarding all received traffic to the right virtual machine on our server.
 
-We crafted a custom installation of the Apache webserver using modified .htaccess file, ModRewrite module, cURL module and php.ini configuration files, in order to be able to transparently forward user requests to the appropriate URL on the corresponding virtual machine. Any attempt to read a non-existing resource, or to access the proxy page itself would result in a usual 404 error page shown to the user. Not taking into account possible timing attacks or intrusions on the proxy, there is no way for a visitor to understand that he is speaking to a proxy.
+We crafted a custom installation of the Apache web server using modified .htaccess file, ModRewrite module, cURL module and php.ini configuration files, in order to be able to transparently forward user requests to the appropriate URL on the corresponding virtual machine. Any attempt to read a non-existing resource, or to access the proxy page itself would result in a usual 404 error page shown to the user. Not taking into account possible timing attacks or intrusions on the proxy, there is no way for a visitor to understand that he is speaking to a proxy.
 
 The HoneyProxy system installed on every website is composed of an index file, the PHP proxy script itself and a configuration file. The index file is the home page of the website, and it links to the vulnerable web applications and to other honeypot websites, based on the contents of the configuration file. The proxy uses sessions in order to serve the appropriate page to each user, and it also scans each response received from the web application before forwarding it in order to substitute each domain with the one initially requested by the user.
 
@@ -131,11 +131,11 @@ Furthermore, The PHP proxy adds two custom headers to each request it receives f
 \item[X-Server-Path: ] this custom header is set by our PHP proxy in order to make it possible, for us, to understand the domain of provenance of the request when analyzing the request logs on the virtual machines. An example of such an entry is: X-Server-Path: http://sub1.site.com/. This entry will be used to substitute all references to other resources inside each page before sending it to the user.
 \end{description}
 
-These two headers are transmitted only between the hosting webserver and the honeypot VM's webserver, and thus they are not visible to the users of the HoneyProxy.
+These two headers are transmitted only between the hosting web server and the honeypot VM's web server, and thus they are not visible to the users of the HoneyProxy.
 
 \section {The Gateway}
 
-The Gateway is in charge of sorting requests coming from the proxy to the appropriate webserver. This is the only communication channel between the vulnerable web applications and the outside world, and it's therefore a critical point for the infrastructure.
+The Gateway is in charge of sorting requests coming from the proxy to the appropriate web server. This is the only communication channel between the vulnerable web applications and the outside world, and it's therefore a critical point for the infrastructure.
 This machine runs a very basic Debian version, with a complex routing table and a complete set of firewall rules based on iptables. We provided this machine with two connections to the Internet: the main one, where the requests to/from the honeypots are going through, which is based on a point-to-point VPN connection to the proxy, and a secondary line which is directly connected to the outside world via a DSL connection.
 
 The general approach on which the gateway relies in order to solve connections is the following:
@@ -143,7 +143,7 @@ The general approach on which the gateway relies in order to solve connections i
 \begin{description}
 \item[Requests coming from the proxy: ] these requests are coming from the point-to-point VPN connection. The proxy already changed the request in such a way that the destination port will be specific to the web application the request is directed to. The proxy simply receives the request, changes the destination port to the usual 80 and sends the request to the appropriate web application.
 
-\item[Request coming from a web application: ] when the gateway receives a request coming from one of the webservers, it tries to understand its nature. If it's an HTTP response, it will forward it to the Proxy as a normal gateway, if it's something else (a beginning SSH connection, a raw IP packet or something else) it will immediately drop the request and dump it on a log which will be analyzed daily. There are two exceptions to this behavior, explained in the following points.
+\item[Request coming from a web application: ] when the gateway receives a request coming from one of the web servers, it tries to understand its nature. If it's an HTTP response, it will forward it to the Proxy as a normal gateway, if it's something else (a beginning SSH connection, a raw IP packet or something else) it will immediately drop the request and dump it on a log which will be analyzed daily. There are two exceptions to this behavior, explained in the following points.
 
 \item[DNS requests coming from a web application: ] DNS requests represent an exception to the normal behavior. This kind of requests are forwarded to the Internet by the gateway using the secondary line. This behavior allows for the request to be solved without passing through the web proxy. The proxy, in fact, is not hosted in our facilities and some malicious DNS could be blocked by the hosting provider. In this way we are sure that every DNS request is solved independently from the target of the request.
 
