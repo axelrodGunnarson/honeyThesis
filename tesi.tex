@@ -1,6 +1,6 @@
 % per commentare una riga mettere % al suo inizio
 % per s-commentare una riga (ossia attivarla) togliere il % al suo inizio
-\documentclass[pdfa% formato PDF/A, obbligatorio per l'archiviazione delle tesi di Polito
+\documentclass[pdfa% formato PDF/A, obbligatorio per l'archiviazione delle tesi di Politob
 ,cucitura%lascia margine per la rilegatura
 %,twoside% per stampa fronte-retro (fortemente consigliato per tesi voluminose, opzionale per le altre)
 %,12pt% font più grande (12pt) rispetto a quello normalmente usato (11pt)
@@ -44,7 +44,7 @@
 
 %\monografia{Gestione informatizzata di un magazzino ricambi}% per la laurea triennale
 \titolo{Web Honeypot 2.0\\Deployment of a Fully Functional Honeypot Network\\and
-an Analysis of Attackers Behaviors\\ on the Web}% per la laurea quinquennale e il dottorato
+an Analysis of Attackers behaviours\\ on the Web}% per la laurea quinquennale e il dottorato
 %\sottotitolo{Metodo dei satelliti medicei}% NON obbligatorio, per la laurea quinquennale e il dottorato
 
 %%% scegliere il proprio corso
@@ -60,7 +60,7 @@ an Analysis of Attackers Behaviors\\ on the Web}% per la laurea quinquennale e i
 %\direttore{prof. Albert Einstein}% per il dottorato
 %\coordinatore{prof. Albert Einstein}% per il dottorato
 \relatore{prof.\ Antonio Lioy}% per la laurea e il dottorato
-\secondorelatore{prof.\ Davide Balzarotti}% per la laurea magistrale
+%\secondorelatore{prof.\ Davide Balzarotti}% per la laurea magistrale
 %\terzorelatore{{\tabular{@{}l}dott.\ Neil Armstrong\\prof. Maria Rossi\endtabular}}% per la laurea magistrale
 %\tutore{ing.~Karl Von Braun}% per il dottorato
 %\tutoreaziendale{dott.\ ing.\ Giovanni Giacosa} % solo per la laurea di secondo livello con tesi svolta in azienda
@@ -106,6 +106,7 @@ an Analysis of Attackers Behaviors\\ on the Web}% per la laurea quinquennale e i
 \usepackage{subcaption}
 \usepackage{tabularx}
 \usepackage{float}
+\usepackage{dirtree}
 
 
 %end my modifications
@@ -131,13 +132,13 @@ The first section of this thesis presents the design, implementation, and deploy
 
 In the second chapter, we present a platform for the automatic collection, normalization and clustering of files attackers uploaded or modified on the honeypot network. We also implemented a web interface for monitoring the honeypot network and for a visual representation of clusters, whose design will also be discussed in this chapter.
 
-In the last part of this work we show the results obtained by collecting, normalizing and clustering uploaded files, showing the most common behaviors of web attacks in the real world. We also present some examples of files we collected during our experiments.
+In the last part of this work we show the results obtained by collecting, normalizing and clustering uploaded files, showing the most common behaviours of web attacks in the real world. We also present some examples of files we collected during our experiments.
 
-Finally, we try to analyze the reasons and goals of such attacks.
+Finally, we try to analyse the reasons and goals of such attacks.
 
 All experiments have been realized in Eurecom Institute (Sophia Antipolis, France), with the support of Trend MicroSystem for the websites hosting service.
 
-During these experiments we collected 9.5 GB of raw HTTP Requests, consisting in approximately 11.0M GET and 1.9M POST. We extracted more than 110,000 files, 85,000 of them unique. Furthermore, we divided these files in 25 categories and we analyzed each of them in order to analyze their purpose and detect the most common trends used by attackers in the wild.
+During these experiments we collected 9.5 GB of raw HTTP Requests, consisting in approximately 11.0M GET and 1.9M POST. We extracted more than 110,000 files, 85,000 of them unique. Furthermore, we divided these files in 25 categories and we analysed each of them in order to analyse their purpose and detect the most common trends used by attackers in the wild.
 
 %% inserire sempre nella tesi per la laurea di I livello, perché il nome dei tutori non è indicato sul frontespizio.
 %Il lavoro descritto in questa monografia è stato svolto sotto la supervisione
@@ -164,13 +165,21 @@ During these experiments we collected 9.5 GB of raw HTTP Requests, consisting in
 
 \input{chapter2.tex}
 
-\chapter{Results}
+\chapter{User Manual}
 
 \input{chapter3.tex}
 
-\chapter{Conclusions and Future Works}
+\chapter{Developer Manual}
 
 \input{chapter4.tex}
+
+\chapter{Results}
+
+\input{chapter5.tex}
+
+\chapter{Conclusions and Future Works}
+
+\input{chapter6.tex}
 
 \input{biblio.tex}
 

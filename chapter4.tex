@@ -1,17 +1,37 @@
-\section{Conclusions}
+\section{Developer Manual}
 
-In this research we described the implementation and deployment of a honeypot network based on a number of real, vulnerable web applications. Using the collected data, we studied the behavior of the attackers before, during, and after they compromise their targets. Our experiments run successfully for more than 100 days, collecting several GB of data and successfully identifying the most common trends in nowadays web attacks.
+\subsection{Developer Overview}
 
-The results of our study provide interesting insights on the current state of exploitation behaviors on the web. On one side, we were able to confirm known trends for certain classes of attacks, such as the prevalence of eastern European countries in comment spamming activities, and the fact that many of the scam and phishing campaigns are still operated by criminals in African countries. Pharmaceutical ads appear to be the most common subject among spam and comment spamming activities, as found by other recent studies.
+Defining a developer can be quite harsh: The problem is that our system is composed by multiple parts, each one devoted to a different objective. We strongly suggest to have different people managing different part of the system, for example:
 
-On the other hand, we were also able to observe and study a large number of manual attacks, as well as many infections aimed at turning web servers into IRC bots. This suggests that some of the threats that are often considered outdated are actually still very popular (in particular between young criminals) and are still responsible for a large fraction of the attacks against vulnerable websites. Defacement is another activity which, while not being really dangerous in terms of client-security, can be very annoying for webmasters, who have to restore the machine to a past state. Furthermore, the lack of legal jurisdiction about malicious activities performed on the Internet works as an attractor for computer-savvy teenagers.
+\begin{itemize}
+\item
+One person should check on the health of the whole system, checking connections, the several machines involved and the health of the proxy. He should also constantly check several websites for understanding if any of the websites have been uncovered as a honeypot platform, and perform any counteraction requested accordingly to the decided policy (change of the domain name, change of the proxy etc.).
+\item One person should create new websites on a daily basis, removing the old ones (the ones not receiving any connections), creating new ones and updating other ones with new vulnerabilities. We used several websites in order to be constantly updated with vulnerabilities, like \url{http://1337day.com/} or \url{http://www.exploit-db.com/}
+\item Finally, a third person should be put in charge of the clusterization/deobfuscation tool. As our system is completely based on similarity between files (and not, for example, on extraction of specific features), it's necessary to supervise this process and manually label any cluster falling to an unknown category. Furthermore, it's always possible to improve the reliability of the normalization and deobfuscation process, especially when dealing with exotic or new types of files.
+\end{itemize}
 
-Furthermore, we created a platform which can be easily replicated and which is very scalable. Adding new applications, as well as adding new domains, is a low time-consuming task, allowing for fast updates and improvements of the system.
+\subsection{Check health of the system}
 
-\section{Future Works}
+The system is composed by several machines spread over the world in different private networks.
 
-Our honeypot platform is currently running and receiving requests. However, after more than 100 days we begin to notice a slight decrease in the number of attacks performed to our servers. We believe that some attackers are starting to understand that our domains are connecting to a honeypot and not a real web server, and they are blacklisting our IPs from their scans. We are going to tackle this problem by changing both domains and IPs of the proxy (our modular infrastructure allows to easily perform this sort of tasks, without changing the whole platform).
+We do not provide any assistance in checking the health of the proxies, but all of them are connected to the gateway by means of a private VPN tunnel. A possible way for guarantee the health of the proxies (and the one we used so far during experiments) is a small script manually created which simply tries to download the head page of every domain. In case a proxy is not answering before a specified time-out (which should be set according to the speed of the network connecting the proxy to the gateway), the operator should manually check the status of the proxy by connecting via ssh to it. The list of the proxy servers is available in the home directory of the gateway.
 
-Furthermore, we are going to replace some of the web applications we used in order to be updated with new vulnerabilities, as we noticed that over time we received less and less attacks on the oldest applications (Joomla!). Because each application is hosted on its own virtual web server, adding a new application is as easy as inserting a new virtual machine image to the VM server.
+Furthermore, we use Echolot \cite{echolot} for computing statistics about reliability of the VPN tunnels and of the proxies. This program, written by Palfrader, is a specific daemon that regularly sends messages through other machines to check their reliability. It's activated as a daemon, and can be configured for sending ping ``ECHO REQUEST'' and ``ECHO REPLY'' messages. Using this tool we are able to calibrate time-outs for alerting of a possible crash of a proxy.
 
-Finally, we collected several GB of data. We can always perform more analysis on the different files, as exploring the development of received files, looking at which functionalities are implemented in newer versions of web shells or which updates bot scripts are receiving from C\&C servers. Other than files, we also collected all requests attackers performed from our machines toward the external world. We can analyze these requests, analyzing URLs and domains, in order to understand the source attackers use for downloading new files, and eventually collaborate with web-hosting providers in order to make automatic download of files a more difficult task.
+Whenever we want to change a domain, we have to edit the file present in the home directory of the gateway keeping track of every domain present in the system and then use the deploy script (cfr. Section ~\ref{sec:websiteOverview}). This should be performed after we set the new VPN tunnel. By launching this script, we are simply overloading the new configuration to all proxies, included the one just added.
+
+\subsection{Vulnerability check}
+
+Vulnerability checking is always a hard matter. There is no actual silver bullet for understanding which vulnerability will be the ``most attractive'' for attackers and which won't be.
+
+Whenever we want to introduce a new vulnerability in the system and add a new machine, we try to discover whether the vulnerability is well-known by attackers and whether can be useful for an attacker to harm a system.
+The first point can be accomplished by looking at several exploit databases like dbExploit, and looking at the number of download requests for each exploit. In addiction, we also looked at several forums and websites (especially Arabian, Russian and Indonesian ones), in order to get information about the most exploited vulnerabilities used by attackers. We always point to vulnerabilities being discovered at most three years ago, as an old one would probably be less attractive than a new one (less people would updated their website to a newer and patched version).
+
+As we are mostly interested in uploaded files and requests performed by attackers, we try to have most of our websites vulnerable to a remote code execution / arbitrary file upload vulnerability. The attackers exploiting such a hole would then be able to upload their own malicious files, and consequently allowing us to examine them in details. Whenever these two kind of vulnerabilities are not available, we focus our attention on adiminstrator password resets.
+
+It's important to notice how we always consider a good practice to review not only the vulnerability but the overall Content Management System source code in order to avoid the attackers can use it in an unexpected way.
+
+We do not provide any tool for helping the developer in dealing with the problem. He should be able to investigate about them by its own, understanding what they are and how can these be used for compromising the system, and put on place a suitable honeypot to be added to the system.
+
+\subsection{Normalization and Deobfuscation}
